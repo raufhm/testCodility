@@ -21,6 +21,7 @@ func SolutionTwo(T []string, R []string) (result float64) {
 		for idx2, dataR := range R {
 			if idx2 == idx1 {
 				inputMap[dataT] = dataR
+				break
 			}
 		}
 	}
@@ -34,6 +35,7 @@ func SolutionTwo(T []string, R []string) (result float64) {
 				isOK = true
 			} else {
 				isOK = false
+				break
 			}
 		}
 		if isOK == true {
