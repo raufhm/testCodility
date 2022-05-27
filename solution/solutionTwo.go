@@ -12,18 +12,12 @@ func SolutionTwo(T []string, R []string) (result float64) {
 	inputMap := map[string]string{}
 
 	// do map for each group and map status for each test type
-	for idx1, dataT := range T {
+	for i, dataT := range T {
 		if _, exist := groupMap[dataT[:lenGroup]]; !exist {
 			groupMap[dataT[:lenGroup]] = []string{}
 		}
 		groupMap[dataT[:lenGroup]] = append(groupMap[dataT[:lenGroup]], dataT)
-
-		for idx2, dataR := range R {
-			if idx2 == idx1 {
-				inputMap[dataT] = dataR
-				break
-			}
-		}
+		inputMap[dataT] = R[i]
 	}
 
 	// count score if only OK in each grup
