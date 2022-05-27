@@ -22,10 +22,8 @@ func Solution(A []int, S int) int {
 		for idx2, dataB := range A {
 			if idx2 < idx1 {
 				continue
-			} else if idx2 == idx1 {
-				if dataA == S {
-					counter++
-				}
+			} else if idx2 == idx1 && dataA == S {
+				counter++
 			} else {
 				lenIdx := len(A[idx1 : idx2+1])
 				sumElement = sumElement + dataB
