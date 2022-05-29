@@ -1,13 +1,20 @@
 package solution
 
 import (
+	"fmt"
 	"math"
 	"regexp"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 )
 
 func SolutionTwo(T []string, R []string) (result float64) {
-	lenGroup := GetLen(T[0])
+	lenGroup, err := GetLen(T[0])
+	if err != nil {
+		log.Error(err)
+		return
+	}
 	groupMap := map[string][]string{}
 	inputMap := map[string]string{}
 
@@ -42,9 +49,13 @@ func SolutionTwo(T []string, R []string) (result float64) {
 	return
 }
 
-func GetLen(input string) (length int) {
+func GetLen(input string) (length int, err error) {
 	re := regexp.MustCompile("[0-9]+")
 	number := re.FindAllString(input, -1)
+	if len(number) == 0 {
+		err = fmt.Errorf("error occured")
+		return
+	}
 	length = strings.IndexAny(input, number[0]) + 1
 	return
 }

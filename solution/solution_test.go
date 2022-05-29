@@ -14,7 +14,7 @@ func TestSolution(t *testing.T) {
 }
 
 func TestGetLen(t *testing.T) {
-	result := GetLen("test1a")
+	result, _ := GetLen("test1a")
 	_ = result
 }
 
